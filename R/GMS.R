@@ -1,0 +1,145 @@
+GMS <-
+function(data,method,m){ 
+  library(mvtnorm)
+  CATT=function(tab,score){
+    if((tab[1,1]<0.5)||(tab[1,2]<0.5)||(tab[1,3]<0.5)||(tab[2,1]<0.5)||(tab[2,2]<0.5)||(tab[2,3]<0.5)){
+      tab=tab+matrix(rep(0.5,6),nrow=2)
+    }
+    n=sum(tab)
+    nr=apply(tab,2,sum)
+    Rbar=sum(nr*score)/n
+    s2=sum(nr*(score-Rbar)^2)
+    phi=sum(tab[1,])/n
+    catt_v=sum(tab[1,]*(score-Rbar))/sqrt(phi*(1-phi)*s2)
+
+
+    return(catt_v)
+  }
+  index=function(a){
+    if(a=="TRUE"){
+      b=1
+    }
+    else{
+      b=0
+    }
+    return(b)
+  }
+  HWDTT=function(tab){
+    if((tab[1,1]<0.5)||(tab[1,2]<0.5)||(tab[1,3]<0.5)||(tab[2,1]<0.5)||(tab[2,2]<0.5)||(tab[2,3]<0.5)){
+      tab=tab+matrix(rep(0.5,6),nrow=2)
+    }
+    n=sum(tab)
+    r=sum(tab[1,])
+    s=sum(tab[2,])
+    nn=apply(tab,2,sum)
+    pr=tab[1,]/r
+    ps=tab[2,]/s
+    pn=nn/n
+    deltap=pr[3]-(pr[3]+0.5*pr[2])^2
+    deltaq=ps[3]-(ps[3]+0.5*ps[2])^2
+    u=sqrt(r*s/n)*(deltap-deltaq)
+    v1=1-pn[3]-0.5*pn[2]
+    v2=pn[3]+0.5*pn[2]
+    return(u/(v1*v2))
+  }
+  REAL=function(data){
+    catt0=CATT(data,c(0,0,1))
+    catt05=CATT(data,c(0,0.5,1))
+    catt1=CATT(data,c(0,1,1))
+    se=HWDTT(data)
+    c0=qnorm(0.95)
+    a1=catt0*index((catt05>0)&&(se>c0))+catt1*index((catt05>0)&&(se<(-c0)))+catt05*index((catt05>0)&&(abs(se)<=c0))
+    a2=-catt1*index((catt05<=0)&&(se>c0))-catt0*index((catt05<=0)&&(se<(-c0)))-catt05*index((catt05<=0)&&(abs(se)<=c0))
+    return(a1+a2)  
+  }
+  GMS1=function(data){
+    c0=qnorm(0.95)
+    catt0=data[1]
+    catt1=data[2]
+    catt05=data[3]
+    se=data[4]
+    a1=catt0*index((catt05>0)&&(se>c0))+catt1*index((catt05>0)&&(se<(-c0)))+catt05*index((catt05>0)&&(abs(se)<=c0))
+    a2=-catt1*index((catt05<=0)&&(se>c0))-catt0*index((catt05<=0)&&(se<(-c0)))-catt05*index((catt05<=0)&&(abs(se)<=c0))
+    return(a1+a2)
+  }
+  GMS2=function(data){
+    c0=qnorm(0.95)
+    tab=matrix(data,nrow=2,byrow=TRUE)
+    catt0=CATT(tab,c(0,0,1))
+    catt05=CATT(tab,c(0,0.5,1))
+    catt1=CATT(tab,c(0,1,1))
+    se=HWDTT(tab)
+    a1=catt0*index((catt05>0)&&(se>c0))+catt1*index((catt05>0)&&(se<(-c0)))+catt05*index((catt05>0)&&(abs(se)<=c0))
+    a2=-catt1*index((catt05<=0)&&(se>c0))-catt0*index((catt05<=0)&&(se<(-c0)))-catt05*index((catt05<=0)&&(abs(se)<=c0))
+    return(a1+a2)
+  }
+  MAF=sum(data[,3])/sum(data)+0.5*(sum(data[,2])/sum(data))
+  rho01=sqrt(MAF*(1-MAF)/((1+MAF)*(2-MAF)))
+  rho005=sqrt(2*(MAF)/(1+MAF))
+  rho051=sqrt(2*(1-MAF)/(2-MAF))
+  rho0=sqrt((1-MAF)/(1+MAF))
+  rho1=-sqrt(MAF/(2-MAF))
+  omega0=sqrt(MAF*(1+MAF)/2)
+  omega1=sqrt((1-MAF)*(2-MAF)/2)
+  phi0=(rho0-rho1*rho01)/(1-rho01^2)
+  phi1=(rho1-rho0*rho01)/(1-rho01^2)
+  p=c(sum(data[,1]),sum(data[,2]),sum(data[,3]))/sum(data)
+  r=sum(data[1,])
+  s=sum(data[2,])
+  real=REAL(data)
+  ASY=function(t){
+    c0=qnorm(0.95)
+    s1=matrix(c(1,0,rho005,0,1,rho0,rho005,rho0,1),nrow=3)
+    s2=matrix(c(1,0,rho051,0,1,-rho1,rho051,-rho1,1),nrow=3)
+    l1=pmvnorm(lower=-Inf,upper=c(0,-c0,-t),mean=c(0,0,0),sigma=s1)[1] 
+    l2=pmvnorm(lower=-Inf,upper=c(0,-c0,-t),mean=c(0,0,0),sigma=s2)[1]
+    a=2*(l1+l2)+1.8*pnorm(min(0,-t))
+    return(a)  
+  }
+  print("genetic model selection test")
+  if(method=="asy"){
+    b=ASY(real)
+    if(b>=0.05){
+      conclu="null hypothesis: association doesn't exist under significant level 0.05"
+    }
+    if(b<0.05){
+      conclu="alternative hypothesis: association exists under significant level 0.05"
+    }
+    out=list("method"="asy","statistics"=real,"Pvalue"=b,"conclusion"=conclu) 
+  }
+  if(method=="bvn"){
+    BV05=function(x,a1,a2){
+      return(a1*x[1]+a2*x[2])
+    }
+    bv01=rmvnorm(m,mean=c(0,0),sigma=matrix(c(1,rho01,rho01,1),nrow=2))
+    bv05=apply(bv01,1,BV05,a1=omega0,a2=omega1)
+    bvh=apply(bv01,1,BV05,a1=phi0,a2=phi1)
+    bv=cbind(bv01,bv05,bvh)
+    gmstt1=apply(bv,1,GMS1)
+    b=length(gmstt1[gmstt1>real])/m
+     if(b>=0.05){
+      conclu="null hypothesis: association doesn't exist under significant level 0.05"
+    }
+    if(b<0.05){
+      conclu="alternative hypothesis: association exists under significant level 0.05"
+    }
+    out=list("method"="bvn","statistics"=real,"Pvalue"=b,"conclusion"=conclu)  
+  }
+  if(method=="boot"){
+    ca=rmultinom(m,r,p)
+    co=rmultinom(m,s,p)
+    caco=rbind(ca,co)
+    gmstt2=apply(caco,2,GMS2)
+    b=length(gmstt2[gmstt2>real])/m
+    if(b>=0.05){
+      conclu="null hypothesis: association doesn't exist under significant level 0.05"
+    }
+    if(b<0.05){
+      conclu="alternative hypothesis: association exists under significant level 0.05"
+    }
+    out=list("method"="boot","statistics"=real,"Pvalue"=b,"conclusion"=conclu) 
+ 
+  }
+  return(out)
+}
+
