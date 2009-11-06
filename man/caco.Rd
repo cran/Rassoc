@@ -27,17 +27,11 @@ ex=matrix(caco[1,],nrow=2,byrow=TRUE)
 ## ex is a 2 by 3 case-control contingency table of SNP rs380390.
 ABT(ex)
 ## Conduct the allelic based test to dataset ex. 
-## "the allelic based test"
-##$statistics
-##-5.490279
-## The statistics of the test is -5.490279.
-##$Pvalue
-##4.012992e-08
-## The associated p-value of the test is 4.012992e-08.
-##$conclusion
-##"alternative hypothesis: association exists under significant level 0.05"
-## Under the significant level 0.05, the alternative hypothesis that the 
+## The allelic based test
+## data:  ex 
+## statistic = -5.4903, p-value = 4.013e-08
+## The statistic of the test is -5.4903.
+## The associated p-value of the test is 4.013e-08.
 
-##association exists is accepted according to the given p-values.
 }
 

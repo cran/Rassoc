@@ -5,8 +5,7 @@
 The allelic based test
 }
 \description{
-This function conducts the allelic based test to a 2 by 3 case-control contingency table and reports the test statistics, associated p-value and conclusion for the hypothesis test respectively.
-}
+This function conducts the allelic based test to a 2 by 3 case-control contingency table and reports the test statistics and associated p-value.}
 \usage{
 ABT(data)
 }
@@ -18,15 +17,12 @@ data is a 2 by 3 case-control contingency table. The first and second rows repre
 }
 }
 \value{
-\item{statistics}{
+\item{statistic}{
 
-the statistics of the allelic based test}
-\item{Pvalue}{
+the statistic of the allelic based test}
+\item{p.value}{
 
 the associated p-value of the allelic based test}
-\item{conclusion}{
-
-the conclusion of the hypothesis test}
 }
 \references{
 Sasieni, PD(1997). From genotypes to genes: doubling the sample size. Biometrics 53, 1253-1261.
@@ -40,19 +36,11 @@ ex=matrix(caco[1,],nrow=2,byrow=TRUE)
 ## ex is an example of a 2 by 3 case-control contingency table. 
 ABT(ex)
 ## Conduct the allelic based test to dataset ex. 
-##"the allelic based test"
-##$statistics
-##-5.490279
-## The statistics of the test is -5.490279.
-##$Pvalue
-##4.012992e-08
-## The associated p-value of the test is 4.012992e-08.
-##$conclusion
-##"alternative hypothesis: association exists under significant level 0.05"
-## Under the significant level 0.05, the alternative hypothesis that the
-
-
-##association exists is accepted according to the given p-values.
+## The allelic based test
+## data:  ex 
+## statistic = -5.4903, p-value = 4.013e-08
+## The statistic of the test is -5.4903.
+## The associated p-value of the test is 4.013e-08.
 }
 \seealso{\code{\link{caco}}}
 

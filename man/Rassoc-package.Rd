@@ -7,15 +7,15 @@
 Robust tests for case-control genetic association studies 
 }
 \description{
-This package supplies several robust tests for case-control genetic association studies. The tests contained in this package are: allelic based test, Cochran-Armitage trend test, maximin efficiency robust test, MAX3 test and genetic model selection test. For each test, the corresponding R code reports the test statistics, the associated p-value and conclusion of hypothesis test under significant level 0.05 respectively. 
+This package supplies several robust tests for case-control genetic association studies. The tests contained in this package are: allelic based test, Cochran-Armitage trend test, maximin efficiency robust test, MAX3 test and genetic model selection test. For each test, the corresponding R code reports the test statistics and the associated p-value. 
 }
 \seealso{\code{\link{ABT}},\code{\link{CATT}},\code{\link{GMS}},\code{\link{MAX3}},\code{\link{MERT}}}
 \details{
 \tabular{ll}{
 Package: \tab Rassoc\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2009-07-21\cr
+Version: \tab 1.01\cr
+Date: \tab 2009-11-06\cr
 License: \tab GPL (>=2)\cr
 LazyLoad: \tab yes\cr
 }

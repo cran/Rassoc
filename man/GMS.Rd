@@ -28,16 +28,12 @@ boot method re-samples case-control data under null hypothesis and applies GMS t
 \item{method}{
 
 the method chosen to calculate the p-value of GMS}
-\item{statistics}{
+\item{statistic}{
 
-the statistics of the GMS test}
-\item{Pvalue}{
+the statistic of the GMS test}
+\item{p.value}{
 
 the associated p-value of the GMS test}
-\item{conclusion}{
-
-the conclusion of the hypothesis test}
-
 }
 \references{
 Joo, J, Kwak, M and Zheng, G (2009). Improving power for testing genetic association in case-control studies by reducing alternative space. Biometrics (in press).
@@ -49,69 +45,24 @@ case-control association studies. Biostatistics 9, 391-399.
 }
 \examples{
 library(Rassoc)
-data(caco)
-ex=matrix(caco[1,],nrow=2,byrow=TRUE)
-## ex is an example of a 2 by 3 case-control contingency table. 
+ca=c(139,249,112) 
+co=c(136,244,120) 
+a=rbind(ca,co) 
 
-## Using boot method 
-GMS(ex,"boot",10000)
-## Conduct the GMS test to ex, boot method is used based on 1000000   
-##replicates to approximate the p-value of GMS
-## "genetic model selection test"
-##$method
-## "boot"
-## the method chosen is boot
-##$statistics
-## 5.117125
-## The statistics of the test is 5.117125
-##$Pvalue
-## 2e-06
-## The associated p-value of the test using boot method is 2e-06
-##$conclusion
-## "alternative hypothesis: association exists under significant level 0.05"
-## Under the significant level 0.05, the alternative hypothesis that the 
+GMS(a,"boot",100000) 
+## The GMS test using the boot method
+## data:  a 
+## statistic = 0.4894, p-value = 0.6658
 
-##association exists is accepted according to the given p-values.
+GMS(a,"bvn",100000)
+## The GMS test using the bvn method
+## data:  a 
+## statistic = 0.4894, p-value = 0.6598
 
-## Using bvn method 
-GMS(ex,"bvn",10000)
-## Conduct the GMS test to ex, bvn method is used based on 1000000   
-## replicates to approximate the p-value of GMS
-## "genetic model selection test"
-##$method
-## "bvn"
-## the method chosen is bvn
-##$statistics
-## 5.117125
-## The statistics of the test is 5.117125
-##$Pvalue
-## 1e-06
-## The associated p-value of the test using bvn method is 1e-06
-##$conclusion
-## "alternative hypothesis: association exists under significant level 0.05"
-## Under the significant level 0.05, the alternative hypothesis that the 
-
-##association exists is accepted according to the given p-values.
-
-## Using asy method 
-GMS(ex,"asy",1)
-## Conduct the GMS test to ex, asy method is used to approximate the p-value ##of GMS
-## "genetic model selection test"
-##$method
-## "asy"
-## the method chosen is asy
-##$statistics
-## 5.117125
-## The statistics of the test is 5.117125
-##$Pvalue
-## 8.61515e-07
-## The associated p-value of the test using asy method is 8.61515e-07
-##$conclusion
-## "alternative hypothesis: association exists under significant level 0.05"
-## Under the significant level 0.05, the alternative hypothesis that the 
-
-##association exists is accepted according to the given p-values. 
+GMS(a,"asy",100000)
+## The GMS test using the asy method
+## data:  a 
+## statistic = 0.4894, p-value = 0.6621
 }
-\seealso{\code{\link{CATT}}
-         \code{\link{caco}}}
+\seealso{\code{\link{CATT}}}
 

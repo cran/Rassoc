@@ -19,15 +19,12 @@ x is the score of the Cochran-Armitage trend test. It can be any real number bet
 }
 }
 \value{
-\item{statistics}{
+\item{statistic}{
 
-the statistics of the Cochran-Armitage trend test}
-\item{Pvalue}{
+the statistic of the Cochran-Armitage trend test}
+\item{p.value}{
 
 the associated p-value of the Cochran-Armitage trend test}
-\item{conclusion}{
-
-the conclusion of the hypothesis test}
 }
 \references{
 Sasieni, PD(1997). From genotypes to genes: doubling the sample size. Biometrics 53, 1253-1261.
@@ -43,19 +40,11 @@ ex=matrix(caco[1,],nrow=2,byrow=TRUE)
 ## ex is an example of a 2 by 3 case-control contingency table. 
 CATT(ex,0.5)
 ## Conduct the Cochran-Armitage trend test to dataset ex. x is chosen as 0.5, ##which is optimal under the additive/multiplicative genetic model.
-## "the Cochran-Armitage trend test"
-##$statistics
-## -5.117125
-## The statistics of the test is -5.117125.
-##$Pvalue
-## 3.102276e-07
-## The associated p-value of the test is 3.102276e-07.
-##$conclusion
-## "alternative hypothesis: association exists under significant level 0.05"
-## Under the significant level 0.05, the alternative hypothesis that the 
-
-##association exists is accepted according to the given p-values.
-
+## The Cochran-Armitage trend test
+## data:  ex 
+## statistic = -5.1171, p-value = 3.102e-07
+## The statistic of the test is -5.1171.
+## The associated p-value of the test is 3.102e-07.
 }
 \seealso{\code{\link{caco}}}
 
