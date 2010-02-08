@@ -38,7 +38,7 @@ the associated p-value of the GMS test}
 \references{
 Joo, J, Kwak, M and Zheng, G (2009). Improving power for testing genetic association in case-control studies by reducing alternative space. Biometrics (in press).
 
-Zang Y, Fung WK and Zheng G(2009). Simple Algorithms to calculate the asymptotic null distribution for MAX3 and genetic model selection in case-control genetic association studies in R. Journal of Statistical software (revised).
+Zang Y, Fung WK and Zheng G(2010). Simple algorithms to calculate the asymptotic null distributions of robust tests in case-control genetic association studies in R. Journal of Statistical software 33(8).  
 
 Zheng, G and Ng HKT (2008). Genetic model selection in two-phase analysis for
 case-control association studies. Biostatistics 9, 391-399.

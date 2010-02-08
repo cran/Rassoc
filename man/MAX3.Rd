@@ -38,7 +38,7 @@ the associated p-value of the MAX3 test}
 \references{
 Freidlin, B, Zheng, G, Li, Z and Gastwirth, JL (2002). Trend tests for case-control studies of genetic markers: power, sample size and robustness. Human Heredity 53, 146-152.
 
-Zang Y, Fung WK and Zheng G(2009). Simple Algorithms to calculate the asymptotic null distribution for MAX3 and genetic model selection in case-control genetic association studies in R. Journal of Statistical software (revised).
+Zang Y, Fung WK and Zheng G(2010). Simple algorithms to calculate the asymptotic null distributions of robust tests in case-control genetic association studies in R. Journal of Statistical software 33(8).  
 }
 \examples{
 library(Rassoc)

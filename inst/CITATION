@@ -1,0 +1,21 @@
+citHeader("To cite Rassoc in publications use:")
+
+citEntry(entry = "Article",
+  title        = "Simple Algorithms to Calculate Asymptotic Null Distributions of Robust Tests in Case-Control Genetic Association Studies in {R}",
+  author       = personList(as.person("Yong Zang"),
+                   as.person("Wing Kam Fung"),
+                   as.person("Gang Zheng")),
+  journal      = "Journal of Statistical Software",
+  year         = "2010",
+  volume       = "33",
+  number       = "8",
+  pages        = "1--24",
+  url          = "http://www.jstatsoft.org/v33/i08/",
+
+  textVersion  =
+  paste("Yong Zang, Wing Kam Fung, Gang Zheng (2010).",
+        "Simple Algorithms to Calculate Asymptotic Null Distributions of Robust Tests in Case-Control Genetic Association Studies in R.",
+        "Journal of Statistical Software, 33(8), 1-24.",
+        "URL http://www.jstatsoft.org/v33/i08/.")
+)
+

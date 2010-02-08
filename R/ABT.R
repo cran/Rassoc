@@ -9,10 +9,8 @@
 ABT <-
 function(data){
   DNAME=deparse(substitute(data))
-  data=as.matrix(data)
   ## Check if data is a 2 by 3 contingency table. ##
-  datanew=table(data,exclude=c(NA, NaN, Inf, -Inf))
-  if(sum(datanew)!=6)
+  if(any(is.na(data)==TRUE)||any(abs(data)>10^9))  
   stop("data must be a 2 by 3 table without infinite and missing values.")
   if(any(data<0))
   stop("all entries of data must be non-negative.")

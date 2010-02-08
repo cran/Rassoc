@@ -30,7 +30,7 @@ Gastwirth JL (1966). On robust procedures. Journal of American Statistical Assoc
 
 Gastwirth JL (1985). The use of maximin efficiency robust tests in combining contingency tables and survival analysis. Journal of American Statistical Association 80, 380-384. 
 
-Zang Y, Fung WK and Zheng G(2009). Simple Algorithms to calculate the asymptotic null distribution for MAX3 and genetic model selection in case-control genetic association studies in R. Journal of Statistical software (revised).  
+Zang Y, Fung WK and Zheng G(2010). Simple algorithms to calculate the asymptotic null distributions of robust tests in case-control genetic association studies in R. Journal of Statistical software 33(8).  
 
 }
 \examples{

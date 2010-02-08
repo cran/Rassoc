@@ -29,7 +29,7 @@ the associated p-value of the Cochran-Armitage trend test}
 \references{
 Sasieni, PD(1997). From genotypes to genes: doubling the sample size. Biometrics 53, 1253-1261.
 
-Zang Y, Fung WK and Zheng G(2009). Simple Algorithms to calculate the asymptotic null distribution for MAX3 and genetic model selection in case-control genetic association studies in R. Journal of Statistical software (revised).
+Zang Y, Fung WK and Zheng G(2010). Simple algorithms to calculate the asymptotic null distributions of robust tests in case-control genetic association studies in R. Journal of Statistical software 33(8).  
 
 Zheng, G, Freidlin, B, Li, Z and Gastwirth, JL (2003). Choice of scores in trend tests for case-control studies of candidate-gene associations. Biometrical Journal 45, 335-348. 
 }
