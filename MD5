@@ -1,0 +1,17 @@
+b0eabca9ca4103c0cd07d6f8a225a698 *DESCRIPTION
+be4d6e9b4f6d93ca52cbd19f0f591608 *NAMESPACE
+a905a0ed6149890999d1cde7245fd33c *R/ABT.R
+1a0cee40ac94fd4196f60c7f481aef9b *R/CATT.R
+d8750a65451e7420c354ea0b65d0ef6a *R/GMS.R
+eef7562e92926e0e67a4e6f1c4d34261 *R/MAX3.R
+fef2f6f108fd42aa975aa58b86277b83 *R/MERT.R
+b2a20a2e31b27cf60affa3f5f07790ec *data/caco.rda
+0109703b5e2485bda11caabf73193fad *inst/CITATION
+a0a2f6ca629c268cb0f40b5afbfbfd9b *man/ABT.Rd
+5db945a2ab9201193b80bcfeb8ba752b *man/CATT.Rd
+6bc5232a2d3a82cf9c0b3ecfacfea1c7 *man/GMS.Rd
+62f276afb683c90b94d0bb99b0fd8f79 *man/MAX3.Rd
+db7dd3569a292efd8b77c09f51f16a42 *man/MERT.Rd
+752d3b80bd5fa28306fdaed07ecb7f2c *man/Rassoc-package.Rd
+16054b5acebfc5ee635971e965b67627 *man/caco.Rd
+98c4bdab0c49a3c3b5328ef35c0d3616 *paper.pdf

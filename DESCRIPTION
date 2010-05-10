@@ -1,9 +1,9 @@
 Package: Rassoc
 Type: Package
 Title: Robust tests for case-control genetic association studies
-Version: 1.02
-Date: 2010-02-08
-Author: Yong ZANG <zanngyong@hku.hk>, Wingkam FUNG <wingfung@hku.hk>,
+Version: 1.03
+Date: 2010-05-10
+Author: Yong ZANG <zangyong@hku.hk>, Wingkam FUNG <wingfung@hku.hk>,
         Gang ZHENG <zhengg@nhlbi.nih.gov>
 Maintainer: Yong ZANG <zangyong@hku.hk>
 Depends: R (>= 2.6.0), mvtnorm
@@ -15,6 +15,6 @@ Description: This package supplies several robust tests for
         reports the test statistics and the associated p-value.
 License: GPL (>= 2)
 LazyLoad: yes
-Packaged: 2010-02-08 11:35:27 UTC; zangyong
+Packaged: 2012-10-29 08:57:33 UTC; ripley
 Repository: CRAN
-Date/Publication: 2010-02-08 12:14:23
+Date/Publication: 2012-10-29 08:57:33
